@@ -1,0 +1,75 @@
+<ng-container>
+    <ng-container>
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <ng-container>
+                                <h5 class="m-b-10">WORLD WIDE CORONA VIRUS DETAILS</h5>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+<div class="row">
+    <!-- order-card start -->
+
+    <div class="col-md-6 col-xl-4">
+        <app-card [hidHeader]="true" cardClass="bg-c-blue order-card">
+            <h6 class="text-white">Total Confirmed</h6>
+            <h2 class="text-right text-white"><i class="fa fa-check-circle float-left"></i><span>{{worldTotalConfirmed}}</span></h2>
+            <p class="m-b-0">New Confirmed<span class="float-right">{{newConfirmed}}</span></p>
+        </app-card>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <app-card [hidHeader]="true" cardClass="bg-c-green order-card">
+            <h6 class="text-white">Total Recovered</h6>
+            <h2 class="text-right text-white"><i class="fa fa-user-plus float-left"></i><span>{{worldTotalRecovered}}</span></h2>
+            <p class="m-b-0">New Recovered<span class="float-right">{{newRecovered}}</span></p>
+        </app-card>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <app-card [hidHeader]="true" cardClass="bg-c-red order-card">
+            <h6 class="text-white">Total Deaths</h6>
+            <h2 class="text-right text-white"><i class="fa fa-user-times float-left"></i><span>{{worldTotalDeaths}}</span></h2>
+            <p class="m-b-0">New Deaths<span class="float-right">{{newDeaths}}</span></p>
+        </app-card>
+    </div>
+    <!-- order-card end -->
+
+    <div class="col-xl-12">
+        <app-card cardTitle="COUNTRY WISE CORONA VIRUS DETAILS" blockClass="table-border-style">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Country</th>
+                            <th>Total Confirmed</th>
+                            <th>Total Recovered</th>
+                            <th>Total Deaths</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let list of countryList| paginate: { itemsPerPage: 10, currentPage: p } ;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{list.Country}}</td>
+                            <td>{{list.TotalConfirmed}}</td>
+                            <td>{{list.TotalRecovered}}</td>
+                            <td>{{list.TotalDeaths}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </app-card>
+    </div>
+
+
+
+
+</div>
